@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/status', (request, response) => response.json({ clients: clients.length }));
 
-const PORT = 3000;
+const PORT = 3001;
 
 let clients = [];
 let facts = [];
@@ -49,6 +49,7 @@ function sendEventsToAll(newFact) {
 }
 
 async function addFact(request, respsonse, next) {
+    console.log(request.body)
     const newFact = request.body;
     facts.push(newFact);
     respsonse.json(newFact)
